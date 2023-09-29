@@ -1,4 +1,5 @@
 @import url('https://fonts.googleapis.com/css2?family=Quicksand:wght@300;400;500;700&family=Roboto:wght@400;500&display=swap');
+
 // === MIXIN === 
 @mixin roboto{
     font-family: 'Roboto', sans-serif;
@@ -7,6 +8,7 @@
     font-family: 'Quicksand', sans-serif;
 }
 // === /MIXIN ===
+
 // === VARIABLES ===
 $base: 4px;
 
@@ -18,7 +20,8 @@ $fw-bold: 700;
 
 $fs-sm: 12px;
 $fs-md: 15px;
-
+$fs-lg: 18px;
+$fs-xl: 48px;
 
 $padding-vertical-xs: $base * 5;
 $padding-vertical-sm: $base * 15;
@@ -32,6 +35,7 @@ $color-primary: #697CA6;
 $color-secondary: #6188FF;
 
 // === /VARIABLES ===
+
 // === COMMON ===
 body{
     @include roboto();
@@ -86,6 +90,14 @@ a{
             color:darken(#ADB4D2, 10%) ;
         }
     }
+    &--danger{
+        background-color: #FFD7D7;
+        color: #D43F3F;
+        &:hover{
+            color:darken(#FFD7D7, 10%) ;
+        }
+    }
+
 }
 .btns{
     display: inline-flex;
@@ -110,7 +122,10 @@ h1, h2{
     margin-bottom: $base * 7;
 }
 h3{font-size: 36px;}
-h4{font-size: 24px;}
+h4{
+    font-size: 24px;
+    margin-bottom: $base * 23;
+}
 h5{
     margin-bottom: $base * 4;
     font-size: 10px;
@@ -253,7 +268,7 @@ h5{
     padding: 0;
     margin: 0;
     list-style: none;
-
+    justify-content: center;
     &__item{
         width: $base * 2;
         height: $base * 2;
@@ -270,6 +285,7 @@ h5{
     }
 }
 // === /HERO-IMAGE ===
+
 // === CUSTOMERS ===
 .section-customers {
     .container{
@@ -289,6 +305,7 @@ h5{
     }
 }
 // === /CUSTOMERS ===
+
 // === PLAN-AND-MANAGE ===
 .section-plan-and-manage {
     background-color: #F5F8FF;
@@ -321,18 +338,140 @@ h5{
     }
 }
 // === /PLAN-AND-MANAGE ===
+
+// === FEATURES ===
 .section-features {
-}
-.section-stats {
-    background-color: #E9EFFF;
+    background: url(../img/bg-clouds.svg) no-repeat 50% 50%;
     .container{
-        padding-top: $padding-vertical-sm;
-        padding-bottom: $padding-vertical-sm;
+        text-align: center;
+    }
+    h4{
+        font-weight: $fw-medium;
     }
 }
+.features-list{
+    display: flex;
+    justify-content: space-around;
+    text-align: center;
+    list-style: none;
+    padding: 0;
+    margin-bottom: $base * 13;
+    &__item{
+        flex-basis: 25%;
+        position: relative;
+        &:not(:first-child){
+            margin-left: 40px;
+
+        }
+        &:not(:first-child)::before{
+            position: absolute;
+            top: 120px;
+            left: -34px;
+            content: "";
+            height: 1px;
+            width: $base * 7;
+            background-color: #DAE4FE;
+        }
+        &-icon{
+            display: flex;
+            margin: 0 auto;
+            justify-content: center;
+            align-items: center;
+            width: $base * 17;
+            height: $base * 17;
+            border-radius: 100%;
+            background-color: #F1F5FF;
+            margin-bottom: $base * 8;
+        }
+        &-title{
+            font-size: $fs-sm;
+            font-weight: $fw-bold;
+            color: #4074F8;
+            margin-bottom: $base * 8;
+        }
+        &-text{
+            line-height: 2;
+        }
+    }
+}
+.btns-features{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.or-block{
+    display: inline-flex;
+    align-items: center;
+    margin: 0 $base * 4;
+    font-size: $fs-sm;
+    font-weight: $fw-medium;
+
+    &::before,
+    &::after{
+        content: '';
+        display: block;
+        width: $base * 4;
+        height: 1px;
+        background-color: #DAE4FE;
+
+    }
+    &::before{
+        margin-right: $base * 4;
+    }
+    &::after{
+        margin-left: $base * 4;
+    }
+}
+// === /FEATURES ===
+
+
+// === STATS ===
+.section-stats {
+    background-color: #E9EFFF;
+    display: flex;
+    &-icon{
+        margin-bottom: $base * 6;
+    }
+    &-number{
+        @include quicksand();
+        font-size: $fs-xl;
+        font-weight: $fw-regular;
+        margin-bottom: $base * 7;
+    }
+    &-text{
+        @include quicksand();
+        font-size: $fs-lg;
+        font-weight: $fw-medium;
+        width: 40%;
+        line-height: 1.5;
+
+    }
+    &-left, &-right{
+        flex-basis: 50%;
+        padding: 16 * $base $base * 22;
+        display: flex;
+        flex-direction: column;
+    }
+    &-left{
+        background-color: #6888FF;
+        text-align: right;
+        color: #fff;
+        align-items: flex-end;
+    }
+    &-right{
+        color: #5E80FF;
+        background-color: #E9EFFF;     
+    }
+}
+// === /STATS ===
+// === BLOG ===
 .section-blog {
     background-color: #F5F8FF;
+    .container{
+        text-align: center;
+    }
 }
+// === /BLOG ===
 .section-quotes {
     background-color: #EAF0FF;
 }
